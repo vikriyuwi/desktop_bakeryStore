@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="mainPanel" prefHeight="480.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DryCakeController">
+   <children>
+      <HBox prefHeight="480.0" prefWidth="854.0">
+         <children>
+            <VBox prefHeight="480.0" prefWidth="200.0" style="-fx-background-color: FFFFFF;">
+               <children>
+                  <VBox prefHeight="480.0" prefWidth="200.0" style="-fx-background-color: FFFDE3; -fx-border-radius: 20; -fx-background-radius: 20;">
+                     <children>
+                        <VBox prefHeight="180.0" prefWidth="180.0">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <children>
+                              <Label text="Bakery">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Store">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <Button mnemonicParsing="false" onAction="#changeToOrderView" prefHeight="40.0" prefWidth="180.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-background-color: FFFDE3;" text="Order Data" />
+                        <Button mnemonicParsing="false" onAction="#changeToDryCakeView" prefHeight="40.0" prefWidth="180.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-background-color: E64848;" text="Dry Cake Data" textFill="WHITE" />
+                        <Button mnemonicParsing="false" onAction="#changeToWetCakeView" prefHeight="40.0" prefWidth="180.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-background-color: FFFDE3;" text="Wet Cake Data" />
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+            <Pane prefHeight="480.0" prefWidth="654.0">
+               <children>
+                  <VBox prefHeight="480.0" prefWidth="654.0" style="-fx-background-color: FFFFFF;">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="654.0">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <children>
+                              <Label text="Dry Cake Data">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="btnAddData" mnemonicParsing="false" onAction="#addData" prefHeight="40.0" prefWidth="180.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-background-color: E64848;" text="Add Dry Cake" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="279.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="654.0" style="-fx-background-color: E64848; -fx-border-radius: 20; -fx-background-radius: 20;">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <children>
+                              <Label alignment="CENTER" prefWidth="50.0" text="Id" textFill="WHITE">
+                                 <padding>
+                                    <Insets left="5.0" right="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label alignment="CENTER" prefWidth="200.0" text="Name" textFill="WHITE">
+                                 <padding>
+                                    <Insets left="5.0" right="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label alignment="CENTER" prefWidth="150.0" text="Weight" textFill="WHITE">
+                                 <padding>
+                                    <Insets left="5.0" right="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label alignment="CENTER" prefWidth="150.0" text="Price" textFill="WHITE">
+                                 <padding>
+                                    <Insets left="5.0" right="5.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <ScrollPane prefHeight="230.0" prefWidth="614.0" style="-fx-border-width: 0; -fx-border-color: FFFFFF; -fx-background-color: FFFFFF;">
+                           <content>
+                              <VBox fx:id="DryCakeLayout" prefHeight="317.0" prefWidth="597.0" style="-fx-background-color: FFFFFF;" />
+                           </content>
+                        </ScrollPane>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="200.0">
+                           <children>
+                              <TextField fx:id="tfIdDryCake" prefHeight="29.0" prefWidth="78.0" promptText="id number" style="-fx-background-color: FFFFFF; -fx-border-width: 0 0 3 0; -fx-border-color: E64848;" />
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#btnEditDataDryCake" prefHeight="30.0" prefWidth="30.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-background-color: ADA2FF;">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <graphic>
+                                    <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/edit-icon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="btnDelete" alignment="CENTER" mnemonicParsing="false" onAction="#btnDeleteDataDryCake" prefHeight="30.0" prefWidth="30.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-background-color: EB455F;">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <graphic>
+                                    <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/remove-icon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </VBox>
+                  <Pane fx:id="paneAddCake" prefHeight="480.0" prefWidth="654.0" style="-fx-background-color: FFFFFF;">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="480.0" prefWidth="654.0">
+                           <children>
+                              <Label text="Add Cake">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <HBox alignment="CENTER" prefHeight="40.0" prefWidth="614.0">
+                                 <children>
+                                    <Label prefWidth="50.0" text="Name" />
+                                    <TextField fx:id="tfName" promptText="Cake Name" style="-fx-background-color: FFFFFF; -fx-border-width: 0 0 3 0; -fx-border-color: E64848;" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="40.0" prefWidth="614.0">
+                                 <children>
+                                    <Label prefWidth="50.0" text="Price" />
+                                    <TextField fx:id="tfPrice" promptText="Price" style="-fx-background-color: FFFFFF; -fx-border-width: 0 0 3 0; -fx-border-color: E64848;" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="40.0" prefWidth="614.0">
+                                 <children>
+                                    <Label prefWidth="50.0" text="Weight" />
+                                    <TextField fx:id="tfWeight" promptText="Weight in gam" style="-fx-background-color: FFFFFF; -fx-border-width: 0 0 3 0; -fx-border-color: E64848;" />
+                                 </children>
+                              </HBox>
+                              <Button fx:id="btnSave" mnemonicParsing="false" onAction="#storeData" prefHeight="40.0" prefWidth="180.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-background-color: E64848;" text="Add Data" textFill="WHITE">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#cancelData" prefHeight="40.0" prefWidth="180.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-background-color: FFFFFF;" text="Cancel" />
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneUpdateCake" prefHeight="480.0" prefWidth="654.0" style="-fx-background-color: FFFFFF;">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="480.0" prefWidth="654.0">
+                           <children>
+                              <Label text="Update Cake">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <HBox alignment="CENTER" prefHeight="40.0" prefWidth="614.0">
+                                 <children>
+                                    <Label prefWidth="50.0" text="Name" />
+                                    <TextField fx:id="tfNameUpdate" promptText="Cake Name" style="-fx-background-color: FFFFFF; -fx-border-width: 0 0 3 0; -fx-border-color: E64848;" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="40.0" prefWidth="614.0">
+                                 <children>
+                                    <Label prefWidth="50.0" text="Price" />
+                                    <TextField fx:id="tfPriceUpdate" promptText="Price" style="-fx-background-color: FFFFFF; -fx-border-width: 0 0 3 0; -fx-border-color: E64848;" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="40.0" prefWidth="614.0">
+                                 <children>
+                                    <Label prefWidth="50.0" text="Weight" />
+                                    <TextField fx:id="tfWeightUpdate" promptText="Weight in gam" style="-fx-background-color: FFFFFF; -fx-border-width: 0 0 3 0; -fx-border-color: E64848;" />
+                                 </children>
+                              </HBox>
+                              <Button mnemonicParsing="false" onAction="#btnUpdateData" prefHeight="40.0" prefWidth="180.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-background-color: E64848;" text="Update Data" textFill="WHITE">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#btnCancelUpdate" prefHeight="40.0" prefWidth="180.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-background-color: FFFFFF;" text="Cancel" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
