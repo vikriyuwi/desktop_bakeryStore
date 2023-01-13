@@ -10,7 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.DryCakeCollection;
-import model.Order;
 import model.OrderCollection;
 import model.WetCakeCollection;
 
@@ -31,10 +30,13 @@ public class BakeryStore extends Application {
         WetCakeCollection.addDataCollection("Lemper", 3000, "Chicken");
         WetCakeCollection.addDataCollection("Lumia", 5000, "Chicken Cheese");
         
-        OrderCollection.addDataCollection("12/01/2023", "Anis");
+        OrderCollection.addDataCollection("2022-10-08", "Anis");
         OrderCollection.updateDryCake((OrderCollection.getSize()-1), DryCakeCollection.getData(0));
-        OrderCollection.addDataCollection("13/01/2023", "Yono");
-        OrderCollection.updateDryCake((OrderCollection.getSize()-1), DryCakeCollection.getData(1));
+        OrderCollection.addDataCollection("2022-12-11", "Yono");
+        OrderCollection.updateWetCake((OrderCollection.getSize()-1), WetCakeCollection.getData(1));
+        OrderCollection.addDataCollection("2023-01-08", "Puja");
+        OrderCollection.updateDryCake((OrderCollection.getSize()-1), DryCakeCollection.getData(2));
+        OrderCollection.updateWetCake((OrderCollection.getSize()-1), WetCakeCollection.getData(2));
 
         Parent root = FXMLLoader.load(getClass().getResource("/view/MainView.fxml"));
         Scene scene = new Scene(root);

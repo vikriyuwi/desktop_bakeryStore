@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -119,12 +120,16 @@ public class WetCakeController implements Initializable {
     
     @FXML
     void storeData(ActionEvent event) throws IOException {
-        WetCakeCollection.addDataCollection(tfName.getText(),Integer.parseInt(tfPrice.getText()),tfFilling.getText());
-        FXMLLoader loader = new FXMLLoader();        
-        loader.setLocation(getClass().getResource("/view/WetCakeView.fxml"));
-        
-        Parent root = loader.load();
-        mainPanel.getChildren().setAll(root);
+        if ((tfName.getText().isEmpty() || tfPrice.getText().isEmpty())||tfFilling.getText().isEmpty()) {
+            showWarningMessage("Make sure there is no field is empty");
+        } else {
+            WetCakeCollection.addDataCollection(tfName.getText(),Integer.parseInt(tfPrice.getText()),tfFilling.getText());
+            FXMLLoader loader = new FXMLLoader();        
+            loader.setLocation(getClass().getResource("/view/WetCakeView.fxml"));
+
+            Parent root = loader.load();
+            mainPanel.getChildren().setAll(root);
+        }
     }
     
     @FXML
@@ -135,27 +140,42 @@ public class WetCakeController implements Initializable {
     // delete
     @FXML
     void btnDeleteDataWetCake(ActionEvent event) throws IOException {
-        int id = Integer.valueOf(tfIdWetCake.getText())-1;
-        if(id >=0 && id < WetCakeCollection.getSize())
-        {
-            WetCakeCollection.removeData(id);
-            FXMLLoader loader = new FXMLLoader();      
+        if (!tfIdWetCake.getText().isEmpty()) {
+            int id = Integer.valueOf(tfIdWetCake.getText())-1;
+            if(id >=0 && id < WetCakeCollection.getSize())
+            {
+                WetCakeCollection.removeData(id);
+                FXMLLoader loader = new FXMLLoader();      
 
-            loader.setLocation(getClass().getResource("/view/WetCakeView.fxml"));
+                loader.setLocation(getClass().getResource("/view/WetCakeView.fxml"));
 
-            Parent root = loader.load();
-            mainPanel.getChildren().setAll(root);
+                Parent root = loader.load();
+                mainPanel.getChildren().setAll(root);
+            } else {
+                showWarningMessage("Id cake is out of data");
+            }
+        } else {
+            showWarningMessage("Make sure id cake field is not empty");
         }
     }
     
     // edit data
     @FXML
     void btnEditDataWetCake(ActionEvent event) {
-        int id = Integer.valueOf(tfIdWetCake.getText())-1;
-        tfNameUpdate.setText(WetCakeCollection.getData(id).name);
-        tfPriceUpdate.setText(String.valueOf(WetCakeCollection.getData(id).price));
-        tfFillingUpdate.setText(String.valueOf(WetCakeCollection.getData(id).filling));
-        paneUpdateCake.setVisible(true);
+        if (!tfIdWetCake.getText().isEmpty()) {
+            int id = Integer.valueOf(tfIdWetCake.getText())-1;
+            if(id >=0 && id < WetCakeCollection.getSize())
+            {
+                tfNameUpdate.setText(WetCakeCollection.getData(id).name);
+                tfPriceUpdate.setText(String.valueOf(WetCakeCollection.getData(id).price));
+                tfFillingUpdate.setText(String.valueOf(WetCakeCollection.getData(id).filling));
+                paneUpdateCake.setVisible(true);
+            } else {
+                showWarningMessage("Id cake is out of data");
+            }
+        } else {
+            showWarningMessage("Make sure id cake field is not empty");
+        }
     }
     
     @FXML
@@ -164,19 +184,32 @@ public class WetCakeController implements Initializable {
         
         if(id >= 0 && id < WetCakeCollection.getSize())
         {
-            WetCakeCollection.updateData(id,tfNameUpdate.getText(),Integer.parseInt(tfPriceUpdate.getText()),tfFillingUpdate.getText());
-            paneUpdateCake.setVisible(true);
+            if ((tfName.getText().isEmpty() || tfPrice.getText().isEmpty())||tfFilling.getText().isEmpty()) {
+                showWarningMessage("Make you there is no field is empty");
+            } else {
+                WetCakeCollection.updateData(id,tfNameUpdate.getText(),Integer.parseInt(tfPriceUpdate.getText()),tfFillingUpdate.getText());
+                paneUpdateCake.setVisible(true);
 
-            FXMLLoader loader = new FXMLLoader();        
-            loader.setLocation(getClass().getResource("/view/WetCakeView.fxml"));
+                FXMLLoader loader = new FXMLLoader();        
+                loader.setLocation(getClass().getResource("/view/WetCakeView.fxml"));
 
-            Parent root = loader.load();
-            mainPanel.getChildren().setAll(root);
+                Parent root = loader.load();
+                mainPanel.getChildren().setAll(root);
+            }
         }
     }
     
     @FXML
     void cancelUpdate(ActionEvent event) {
         paneUpdateCake.setVisible(false);
+    }
+    
+    public void showWarningMessage(String message)
+    {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Warning!");
+        alert.setHeaderText("Opps..");
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

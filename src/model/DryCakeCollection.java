@@ -33,6 +33,32 @@ public class DryCakeCollection {
         return DryCakeCol.get(index);
     }
     
+    public static DryCake findData(String name)
+    {
+        int find = -1;
+        for (int i = 0; i < WetCakeCollection.getSize(); i++) {
+            if (DryCakeCol.get(i).name.equals(name)) {
+                find = i;
+            }
+        }
+        if (find >= 0) {
+            return DryCakeCol.get(find);
+        } else {
+            return null;
+        }
+    }
+    
+    public static int findId(String name)
+    {
+        int find = -1;
+        for (int i = 0; i < WetCakeCollection.getSize(); i++) {
+            if (DryCakeCol.get(i).name.equals(name)) {
+                find = i;
+            }
+        }
+        return find;
+    }
+    
     public static void removeData(int index)
     {
         DryCakeCol.remove(index);

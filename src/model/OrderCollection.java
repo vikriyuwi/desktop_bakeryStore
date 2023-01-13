@@ -53,7 +53,7 @@ public class OrderCollection {
         OrderCol.remove(index);
     }
     
-    public static void updateData(int index, String date, String customerName, int amount)
+    public static void updateData(int index, String date, String customerName)
     {
         OrderCol.get(index).setDate(date);
         OrderCol.get(index).setCustomerName(customerName);

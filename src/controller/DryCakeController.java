@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -108,12 +109,20 @@ public class DryCakeController implements Initializable {
     
     @FXML
     public void storeData(ActionEvent event) throws IOException {
-        DryCakeCollection.addDataCollection(tfName.getText(),Integer.parseInt(tfPrice.getText()),Double.parseDouble(tfWeight.getText()));
-        FXMLLoader loader = new FXMLLoader();        
-        loader.setLocation(getClass().getResource("/view/DryCakeView.fxml"));
-        
-        Parent root = loader.load();
-        mainPanel.getChildren().setAll(root);
+        if((tfName.getText().isEmpty() || tfPrice.getText().isEmpty() ) || tfWeight.getText().isEmpty())
+        {
+            showWarningMessage("Make you there is no field is empty");
+        } else {
+            String name = tfName.getText();
+            int price = Integer.parseInt(tfPrice.getText());
+            double weight = Double.parseDouble(tfWeight.getText());
+            DryCakeCollection.addDataCollection(name,price,weight);
+            FXMLLoader loader = new FXMLLoader();        
+            loader.setLocation(getClass().getResource("/view/DryCakeView.fxml"));
+
+            Parent root = loader.load();
+            mainPanel.getChildren().setAll(root);
+        }
     }
     
     public void changePage(ActionEvent event, String page) throws IOException
@@ -145,26 +154,41 @@ public class DryCakeController implements Initializable {
     
      @FXML
     void btnDeleteDataDryCake(ActionEvent event) throws IOException {
-        int id = Integer.valueOf(tfIdDryCake.getText())-1;
-        if(id >=0 && id < DryCakeCollection.getSize())
-        {
-            DryCakeCollection.removeData(id);
-            FXMLLoader loader = new FXMLLoader();      
+        if (!tfIdDryCake.getText().isEmpty()) {
+            int id = Integer.valueOf(tfIdDryCake.getText())-1;
+            if(id >=0 && id < DryCakeCollection.getSize())
+            {
+                DryCakeCollection.removeData(id);
+                FXMLLoader loader = new FXMLLoader();      
 
-            loader.setLocation(getClass().getResource("/view/DryCakeView.fxml"));
+                loader.setLocation(getClass().getResource("/view/DryCakeView.fxml"));
 
-            Parent root = loader.load();
-            mainPanel.getChildren().setAll(root);
+                Parent root = loader.load();
+                mainPanel.getChildren().setAll(root);
+            } else {
+                showWarningMessage("Id cake is out of data");
+            }
+        } else {
+            showWarningMessage("Make sure id cake field is not empty");
         }
     }
 
     @FXML
     void btnEditDataDryCake(ActionEvent event) throws IOException {
-        int id = Integer.valueOf(tfIdDryCake.getText())-1;
-        tfNameUpdate.setText(DryCakeCollection.getData(id).name);
-        tfPriceUpdate.setText(String.valueOf(DryCakeCollection.getData(id).price));
-        tfWeightUpdate.setText(String.valueOf(DryCakeCollection.getData(id).weight));
-        paneUpdateCake.setVisible(true);
+        if (!tfIdDryCake.getText().isEmpty()) {
+            int id = Integer.valueOf(tfIdDryCake.getText())-1;
+            if(id >=0 && id < DryCakeCollection.getSize())
+            {
+                tfNameUpdate.setText(DryCakeCollection.getData(id).name);
+                tfPriceUpdate.setText(String.valueOf(DryCakeCollection.getData(id).price));
+                tfWeightUpdate.setText(String.valueOf(DryCakeCollection.getData(id).weight));
+                paneUpdateCake.setVisible(true);
+            } else {
+                showWarningMessage("Id cake is out of data");
+            }
+        } else {
+            showWarningMessage("Make sure id cake field is not empty");
+        }
     }
     
     @FXML
@@ -173,19 +197,33 @@ public class DryCakeController implements Initializable {
         
         if(id >= 0 && id < DryCakeCollection.getSize())
         {
-            DryCakeCollection.updateData(id,tfNameUpdate.getText(),Integer.parseInt(tfPriceUpdate.getText()),Double.parseDouble(tfWeightUpdate.getText()));
-            paneUpdateCake.setVisible(true);
+            if((tfName.getText().isEmpty() || tfPrice.getText().isEmpty() ) || tfWeight.getText().isEmpty())
+            {
+                showWarningMessage("Make you there is no field is empty");
+            } else {
+                DryCakeCollection.updateData(id,tfNameUpdate.getText(),Integer.parseInt(tfPriceUpdate.getText()),Double.parseDouble(tfWeightUpdate.getText()));
+                paneUpdateCake.setVisible(true);
 
-            FXMLLoader loader = new FXMLLoader();        
-            loader.setLocation(getClass().getResource("/view/DryCakeView.fxml"));
+                FXMLLoader loader = new FXMLLoader();        
+                loader.setLocation(getClass().getResource("/view/DryCakeView.fxml"));
 
-            Parent root = loader.load();
-            mainPanel.getChildren().setAll(root);
+                Parent root = loader.load();
+                mainPanel.getChildren().setAll(root);
+            }
         }
     }
     
     @FXML
     void btnCancelUpdate(ActionEvent event) throws IOException {
         paneUpdateCake.setVisible(false);
+    }
+    
+    public void showWarningMessage(String message)
+    {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Warning!");
+        alert.setHeaderText("Opps..");
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
