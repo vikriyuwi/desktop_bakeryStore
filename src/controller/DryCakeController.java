@@ -197,7 +197,7 @@ public class DryCakeController implements Initializable {
         
         if(id >= 0 && id < DryCakeCollection.getSize())
         {
-            if((tfName.getText().isEmpty() || tfPrice.getText().isEmpty() ) || tfWeight.getText().isEmpty())
+            if((tfNameUpdate.getText().isEmpty() || tfPriceUpdate.getText().isEmpty() ) || tfWeightUpdate.getText().isEmpty())
             {
                 showWarningMessage("Make you there is no field is empty");
             } else {

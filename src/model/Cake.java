@@ -33,4 +33,10 @@ public class Cake {
         this.price = price;
     }
     
+    public void printCakeData()
+    {
+        System.out.println("Name  : " + this.name);
+        System.out.println("Price : " + String.valueOf(this.price) + "\n");
+    }
+    
 }

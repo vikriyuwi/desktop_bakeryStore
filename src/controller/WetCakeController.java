@@ -184,7 +184,7 @@ public class WetCakeController implements Initializable {
         
         if(id >= 0 && id < WetCakeCollection.getSize())
         {
-            if ((tfName.getText().isEmpty() || tfPrice.getText().isEmpty())||tfFilling.getText().isEmpty()) {
+            if ((tfNameUpdate.getText().isEmpty() || tfPriceUpdate.getText().isEmpty())||tfFillingUpdate.getText().isEmpty()) {
                 showWarningMessage("Make you there is no field is empty");
             } else {
                 WetCakeCollection.updateData(id,tfNameUpdate.getText(),Integer.parseInt(tfPriceUpdate.getText()),tfFillingUpdate.getText());

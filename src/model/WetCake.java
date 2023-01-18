@@ -24,4 +24,12 @@ public class WetCake<W> extends Cake{
     public void setFilling(W filling) {
         this.filling = filling;
     }
+    
+    @Override
+    public void printCakeData()
+    {
+        System.out.println("Name     : " + name);
+        System.out.println("Price    : " + String.valueOf(price));
+        System.out.println("Fillling : " + String.valueOf(this.filling) + "\n");
+    }
 }

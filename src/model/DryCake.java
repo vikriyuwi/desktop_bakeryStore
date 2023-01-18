@@ -24,5 +24,13 @@ public class DryCake<D> extends Cake {
     public void setWeight(D weight) {
         this.weight = weight;
     }
+    
+    @Override
+    public void printCakeData()
+    {
+        System.out.println("Name     : " + name);
+        System.out.println("Price    : " + String.valueOf(price));
+        System.out.println("Weight   : " + String.valueOf(this.weight + "\n"));
+    }
 
 }
