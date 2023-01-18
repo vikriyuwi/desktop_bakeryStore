@@ -168,7 +168,7 @@ public class WetCakeController implements Initializable {
             {
                 tfNameUpdate.setText(WetCakeCollection.getData(id).name);
                 tfPriceUpdate.setText(String.valueOf(WetCakeCollection.getData(id).price));
-                tfFillingUpdate.setText(String.valueOf(WetCakeCollection.getData(id).filling));
+                tfFillingUpdate.setText(String.valueOf(WetCakeCollection.getData(id).getFilling()));
                 paneUpdateCake.setVisible(true);
             } else {
                 showWarningMessage("Id cake is out of data");

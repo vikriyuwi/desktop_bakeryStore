@@ -8,20 +8,20 @@ package model;
  *
  * @author fikriyuwi
  */
-public class DryCake extends Cake {
+public class DryCake<D> extends Cake {
     // kemasan dalam satuan gram
-    public double weight;
+    private D weight;
 
-    public DryCake(String name, int price, double weight) {
+    public DryCake(String name, int price, D weight) {
         super(name,price);
         this.weight = weight;
     }
 
-    public double getWeight() {
+    public D getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    public void setWeight(D weight) {
         this.weight = weight;
     }
 

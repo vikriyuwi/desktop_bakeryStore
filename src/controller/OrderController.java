@@ -265,7 +265,7 @@ public class OrderController implements Initializable {
                     try {
                         HBox hBox = item.load();
                         ReciptListItemController dcic = item.getController();
-                        dcic.setData(num, OrderCollection.getData(id).getDryCakes().name, String.valueOf(OrderCollection.getData(id).getDryCakes().price), String.valueOf(OrderCollection.getData(id).getDryCakes().weight + " g"));
+                        dcic.setData(num, OrderCollection.getData(id).getDryCakes().name, String.valueOf(OrderCollection.getData(id).getDryCakes().price), String.valueOf(OrderCollection.getData(id).getDryCakes().getWeight() + " g"));
 //                        ReciptListItemController dcic = item.getController();
 //                        dcic.setData(OrderCollection.getData(i),i);
 
@@ -289,7 +289,7 @@ public class OrderController implements Initializable {
                     try {
                         HBox hBox = item.load();
                         ReciptListItemController dcic = item.getController();
-                        dcic.setData(num, OrderCollection.getData(id).getWetCakes().name, String.valueOf(OrderCollection.getData(id).getWetCakes().price), String.valueOf(OrderCollection.getData(id).getWetCakes().filling));
+                        dcic.setData(num, OrderCollection.getData(id).getWetCakes().name, String.valueOf(OrderCollection.getData(id).getWetCakes().price), String.valueOf(OrderCollection.getData(id).getWetCakes().getFilling()));
 
                         paneReciptList.getChildren().add(hBox);
                     } catch(IOException e) {

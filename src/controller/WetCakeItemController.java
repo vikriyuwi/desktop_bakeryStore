@@ -35,7 +35,7 @@ public class WetCakeItemController implements Initializable {
         lblId.setText(String.valueOf((i+1)));
         lblName.setText(cake.getName());
         lblPrice.setText(String.valueOf(cake.getPrice()));
-        lblFilling.setText(cake.getFilling());
+        lblFilling.setText(String.valueOf(cake.getFilling()));
     }
     
     /**

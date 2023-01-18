@@ -181,7 +181,7 @@ public class DryCakeController implements Initializable {
             {
                 tfNameUpdate.setText(DryCakeCollection.getData(id).name);
                 tfPriceUpdate.setText(String.valueOf(DryCakeCollection.getData(id).price));
-                tfWeightUpdate.setText(String.valueOf(DryCakeCollection.getData(id).weight));
+                tfWeightUpdate.setText(String.valueOf(DryCakeCollection.getData(id).getWeight()));
                 paneUpdateCake.setVisible(true);
             } else {
                 showWarningMessage("Id cake is out of data");

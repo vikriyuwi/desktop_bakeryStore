@@ -8,20 +8,20 @@ package model;
  *
  * @author fikriyuwi
  */
-public class WetCake extends Cake{
+public class WetCake<W> extends Cake{
     // variasi isian
-    public String filling;
+    private W filling;
 
-    public WetCake(String name, int price, String filling) {
+    public WetCake(String name, int price, W filling) {
         super(name,price);
         this.filling = filling;
     }
 
-    public String getFilling() {
+    public W getFilling() {
         return filling;
     }
 
-    public void setFilling(String filling) {
+    public void setFilling(W filling) {
         this.filling = filling;
     }
 }
