@@ -8,6 +8,7 @@ package model;
  *
  * @author fikriyuwi
  */
+
 public class Cake {
     public String name;
     public int price;
